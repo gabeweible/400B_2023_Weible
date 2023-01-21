@@ -1,2 +1,5 @@
 # OS Junk files
 *.DS_Store
+
+# Vim temp. files
+*.swp
