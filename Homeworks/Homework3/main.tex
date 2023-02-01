@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{gensymb, amsmath, amssymb, mathrsfs, mathtools, upgreek, esvect, cancel, bm}
+\usepackage{geometry, float, graphicx, pdflscape, cellspace}
+
+ \geometry{
+ a4paper,
+ left=25.4mm,
+ right=25.4mm,
+ bottom=25.4mm,
+ top=25.4mm
+ }
+
+\usepackage{xparse}
+\DeclareDocumentCommand{\mathdef}{mO{0}m}{%
+  \expandafter\let\csname old\string#1\endcsname=#1
+  \expandafter\newcommand\csname new\string#1\endcsname[#2]{#3}
+  \DeclareRobustCommand#1{%
+    \ifmmode
+      \expandafter\let\expandafter\next\csname new\string#1\endcsname
+    \else
+      \expandafter\let\expandafter\next\csname old\string#1\endcsname
+    \fi
+    \next
+  }%
+}
+
+% Big \dot and \ddot variants
+\usepackage{accents}
+\newcommand*{\bdot}[1]{%
+  \accentset{\mbox{\large\bfseries .}}{#1}}
+\newcommand*{\bddot}[1]{%
+  \accentset{\mbox{\large\bfseries .\hspace{-0.25ex}.}}{#1}}
+% Big \bcdot variant
+\makeatletter
+\newcommand*\bcdot{\mathpalette\bcdot@{.5}}
+\newcommand*\bcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+% Cross product
+\newcommand*{\cross}{\bm{\times}}
+\mathdef{\v}[1]{\vv{\bm{\mathrm{#1}}}} % bold vector macro
+\mathdef{\t}[1]{\tilde{#1}} % tilde
+\mathdef{\m}[1]{\bm{\mathrm{#1}}} % bold matrix macro
+\mathdef{\mrm}[1]{\mathrm{#1}} %\mathrm shorthand
+
+% problem parts with letters
+%\usepackage{chngcntr}
+%\counterwithin*{subsection}{section}
+%\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textbf{ASTR 400B Homework 3}}
+\author{Gabriel Weible}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{3} % Start at 4 for Problem 4
+\section{}
+
+\subsection{}
+The total masses of our Milky Way and the Andromeda galaxy (M31) are equal, at least to 4 significant figures, in this simulation. For each of these galaxies, their respective dark matter halos dominate their total masses, at $1-f_{\mathrm{bar}} = 95.9\%, \, 93.3\%, \, \mathrm{ and } \,\, 95.4\%$ of the total galactic mass for the Milky Way, M31, and M33, respectively.
+
+\subsection{}
+M31 has more than 63\% more stellar mass than the Milky Way (compare $f_{\mathrm{bar}}$ at equal total mass), so I would expect M31 to be more luminous than the Milky Way as well.
+
+\subsection{}
+The two galaxies' dark matter masses are pretty close---relatively speaking---but the Milky Way does have almost 3\% more dark matter. This is not surprising that the Milky Way would have more dark matter than the more-stellar-mass-having Andromeda, given that they both have the same total mass. However, the distinction here between relative and absolute differences is important: because dark matter dominates the total mass for both galaxies, we get this result that ${\sim}3\%$ of M31's dark matter mass is equal to ${\sim}63\%$ of the Milky Way's stellar mass.
+
+\subsection{}
+Our baryon fractions are significantly lower than the value given for the Universe, only ${\sim}\frac{1}{3}$ of that ${\sim}16\%$ at $4.1\%$, $6.7\%$, and $4.6\%$ for the Milky Way, M31, and M33, respectively. I'm not sure exactly why there is such a discrepancy between the baryon fraction for our Local Group and the Universe as a whole. We're not accounting for dust mass, but that would be even less than the gas mass so it couldn't be that. We also haven't included the masses of central supermassive black holes, but even for being ``supermassive,'' these ``only'' have masses of \emph{up to} several billion $\mathrm{M_{\odot}}$, about an order of magnitude below the total baryonic mass in the surrounding stars. Besides, there's no way to really determine if black holes are made of baryonic or non-baryonic matter (no hair!). To be honest, I don't really have a good idea about what all is out there in the universe that isn't in galaxies similar to those in our Local Group. I have to imagine that there are some weirdo, free-floating stars and bodies that aren't within galaxies, but cannot imagine that their collective mass is very significant. There also are (exo)planets, asteroids, comets, and other glorified gas + dust that won't hold a candle to stellar masses either. We could account for non-baryonic matter like electrons (implicitly included in mass that we call baryonic?), neutrinos, etc.~but again, I don't think that their collective mass is going to be very significant. The best idea I've got is that other galaxies further away from us must have less dark matter than in the Local Group, but I don't have any explanation for that inhomogeneity---maybe elliptical galaxies have higher baryon fractions? Another idea is that there could be lots of very faint stars that we can't well see, plus maybe a bunch of brown dwarfs mucking about, which could lead to a more significant mass than (exo)planets, dust, etc.---but is it enough? This one is stumping me.
+
+% Landscape
+\begin{landscape}
+
+\begin{tabular}{Sc Sc Sc Sc Sc Sc}
+\hline
+\hline
+ Galaxy Name         & Halo Mass ($10^{12} \, \mathrm{M}_{\odot}$)   & Disk Mass ($10^{12} \, \mathrm{M}_{\odot}$)   & Bulge Mass ($10^{12} \, \mathrm{M}_{\odot}$)   & Total ($10^{12} \, \mathrm{M}_{\odot}$)   & $f_{\mathrm{bar}}$   \\
+\hline
+ Milky Way           & 1.975                                         & 0.075                                         & 0.010                                          & 2.060                                     & 0.041                \\
+ M31 (Andromeda)    & 1.921                                         & 0.120                                         & 0.019                                          & 2.060                                     & 0.067                \\
+ M33 (Triangulum)   & 0.187                                         & 0.009                                         & 0.000                                          & 0.196                                     & 0.046                \\
+ \hline
+ Local Group & 4.083                                         & 0.204                                         & 0.029                                          & 4.316                                     & 0.054                \\
+ \hline
+ \hline
+\end{tabular}
+
+\end{landscape}
+
+\end{document}
