@@ -5,7 +5,7 @@
 # ### Center of Mass Position and Velocity
 # ### Gabe Weible
 
-# In[141]:
+# In[44]:
 
 
 # import modules
@@ -14,7 +14,7 @@ import astropy.units as u # units
 from ReadFile import Read # we made this!
 
 
-# In[142]:
+# In[45]:
 
 
 class CenterOfMass:
@@ -157,11 +157,11 @@ class CenterOfMass:
             change = np.abs(r_COM - r_COM2)                                                                  
 
             # Before loop continues, reset : r_max, particle separations and COM                                                                                                                        
-
+            
             # Change the frame of reference to the new COM with the half radius                                               
-            x_new = x2 - x_COM2
-            y_new = y2 - y_COM2
-            z_new = z2 - z_COM2
+            x_new = self.x - x_COM2
+            y_new = self.y - y_COM2
+            z_new = self.z - z_COM2
             r_new = np.sqrt(x_new**2 + y_new**2 + z_new**2)
 
             # set the center of mass positions to the refined values                                                   
@@ -174,7 +174,7 @@ class CenterOfMass:
             p_COM = np.array([x_COM, y_COM, z_COM])
             
             # reduce the volume by a factor of 2 again (for the next loop iteration)                                                                
-            r_max /= 2.0   
+            r_max /= 2.0
 
         # set the correct units using astropy and round all values
         # and then return the COM positon vector
@@ -233,104 +233,104 @@ class CenterOfMass:
         return np.around(v_COM, decimals=2) * u.km/u.s
 
 
-# In[143]:
+# In[46]:
 
 
-# Create a Center of mass object for the MW, M31 and M33
-# below is an example of using the class for MW
-MW_COM = CenterOfMass("MW_000.txt", 2.0)
+# # Create a Center of mass object for the MW, M31 and M33
+# # below is an example of using the class for MW
+# MW_COM = CenterOfMass("MW_000.txt", 2)
 
 
-# In[144]:
+# In[47]:
 
 
-# below gives you an example of calling the class's functions
-# MW:   store the position and velocity COM
-MW_COM_p = MW_COM.COM_P(0.1)
-print(MW_COM_p)
-MW_COM_v = MW_COM.COM_V(MW_COM_p[0], MW_COM_p[1], MW_COM_p[2])
-print(MW_COM_v)
+# # below gives you an example of calling the class's functions
+# # MW:   store the position and velocity COM
+# MW_COM_p = MW_COM.COM_P(0.1)
+# print(MW_COM_p)
+# MW_COM_v = MW_COM.COM_V(MW_COM_p[0], MW_COM_p[1], MW_COM_p[2])
+# print(MW_COM_v)
 
 
 # ## 6 &nbsp; Testing Your Code
 
 # ### 1.
 
-# In[145]:
+# In[48]:
 
 
 # MW CoM position and velocity vectors for the disk are already given above,
 # so, let's print the results again:
-print(f'MW disk CoM position vector (t=0): {MW_COM_p}')
-print(f'MW disk CoM velocity vector (t=0): {MW_COM_v}')
+# print(f'MW disk CoM position vector (t=0): {MW_COM_p}')
+# print(f'MW disk CoM velocity vector (t=0): {MW_COM_v}')
 
 
-# In[146]:
+# In[49]:
 
 
-# M31 (Andromeda) CoM position and velocity vectors:
+# # M31 (Andromeda) CoM position and velocity vectors:
 
-M31_COM = CenterOfMass("M31_000.txt", 2.0) # Create CenterOfMass object
-M31_COM_p = M31_COM.COM_P(0.1) # Get the CoM position with a tolerance of 0.1 kpc
-# Get the velocity of the COM (for particles within 15 kpc of the CoM)
-M31_COM_v = M31_COM.COM_V(M31_COM_p[0], M31_COM_p[1], M31_COM_p[2])
+# M31_COM = CenterOfMass("M31_000.txt", 2) # Create CenterOfMass object
+# M31_COM_p = M31_COM.COM_P(0.1) # Get the CoM position with a tolerance of 0.1 kpc
+# # Get the velocity of the COM (for particles within 15 kpc of the CoM)
+# M31_COM_v = M31_COM.COM_V(M31_COM_p[0], M31_COM_p[1], M31_COM_p[2])
 
-# Print results
-print(f'M31 disk CoM position vector (t=0): {M31_COM_p}')
-print(f'M31 disk CoM velocity vector (t=0): {M31_COM_v}')
-
-
-# In[147]:
+# # Print results
+# print(f'M31 disk CoM position vector (t=0): {M31_COM_p}')
+# print(f'M31 disk CoM velocity vector (t=0): {M31_COM_v}')
 
 
-# M33 (Triangulum) CoM position and velocity vectors:
+# In[50]:
 
-M33_COM = CenterOfMass("M33_000.txt", 2) # Create CenterOfMass object
-M33_COM_p = M33_COM.COM_P(0.1) # Get the CoM position with a tolerance of 0.1 kpc
-# Get the velocity of the COM (for particles within 15 kpc of the CoM)
-M33_COM_v = M33_COM.COM_V(M33_COM_p[0], M33_COM_p[1], M33_COM_p[2])
 
-# Print results
-print(f'M33 disk CoM position vector (t=0): {M33_COM_p}')
-print(f'M33 disk CoM velocity vector (t=0): {M33_COM_v}')
+# # M33 (Triangulum) CoM position and velocity vectors:
+
+# M33_COM = CenterOfMass("M33_000.txt", 2) # Create CenterOfMass object
+# M33_COM_p = M33_COM.COM_P(0.1) # Get the CoM position with a tolerance of 0.1 kpc
+# # Get the velocity of the COM (for particles within 15 kpc of the CoM)
+# M33_COM_v = M33_COM.COM_V(M33_COM_p[0], M33_COM_p[1], M33_COM_p[2])
+
+# # Print results
+# print(f'M33 disk CoM position vector (t=0): {M33_COM_p}')
+# print(f'M33 disk CoM velocity vector (t=0): {M33_COM_v}')
 
 
 # ### 2.
 
-# In[148]:
+# In[51]:
 
 
-p_diff = MW_COM_p - M31_COM_p # displacement between centers
-sep = np.sqrt(p_diff[0]**2 + p_diff[1]**2 + p_diff[2]**2) # Distance formula
-print(f'Separation between MW and M31: {sep:.3f}') # print results
+# p_diff = MW_COM_p - M31_COM_p # displacement between centers
+# sep = np.sqrt(p_diff[0]**2 + p_diff[1]**2 + p_diff[2]**2) # Distance formula
+# print(f'Separation between MW and M31: {sep:.3f}') # print results
 
 
-# In[149]:
+# In[52]:
 
 
-v_diff = MW_COM_v - M31_COM_v # relative velocity
-rel_v = np.sqrt(v_diff[0]**2 + v_diff[1]**2 + v_diff[2]**2) # magnitude
-print(f'Relative speed between MW and M31: {rel_v:.3f}') # print results
+# v_diff = MW_COM_v - M31_COM_v # relative velocity
+# rel_v = np.sqrt(v_diff[0]**2 + v_diff[1]**2 + v_diff[2]**2) # magnitude
+# print(f'Relative speed between MW and M31: {rel_v:.3f}') # print results
 
 
 # **These values check out with roughly what we saw in Lecture 2.**
 
 # ### 3.
 
-# In[150]:
+# In[53]:
 
 
-p_diff2 = M31_COM_p - M33_COM_p # displacement between centers
-sep2 = np.sqrt(p_diff2[0]**2 + p_diff2[1]**2 + p_diff2[2]**2) # distance formula
-print(f'Separation between M31 and M33: {sep2:.3f}') # print results
+# p_diff2 = M31_COM_p - M33_COM_p # displacement between centers
+# sep2 = np.sqrt(p_diff2[0]**2 + p_diff2[1]**2 + p_diff2[2]**2) # distance formula
+# print(f'Separation between M31 and M33: {sep2:.3f}') # print results
 
 
-# In[151]:
+# In[54]:
 
 
-v_diff2 = M31_COM_v - M33_COM_v # relative velocity
-rel_v2 = np.sqrt(v_diff2[0]**2 + v_diff2[1]**2 + v_diff2[2]**2) # magnitude
-print(f'Relative speed between M31 and M33: {rel_v2:.3f}') # print results
+# v_diff2 = M31_COM_v - M33_COM_v # relative velocity
+# rel_v2 = np.sqrt(v_diff2[0]**2 + v_diff2[1]**2 + v_diff2[2]**2) # magnitude
+# print(f'Relative speed between M31 and M33: {rel_v2:.3f}') # print results
 
 
 # ### 4.
