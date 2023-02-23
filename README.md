@@ -1,5 +1,5 @@
 # 400B_2023_Weible
-Repo for ASTR 400B Spring 2023 at the University of Arizona (Galactic, Extra-Galactic Astronomy &amp; Cosmology). The primary research project for this class focuses on galaxy merger simulations for our Milky Way, M31 (Andromeda), and M33 (Triangulum), which are expected to merge in about 4.5 billion years.
+Repo for ASTR 400B Spring 2023 at the University of Arizona (Galactic, Extra-Galactic Astronomy &amp; Cosmology). The primary research project for this class focuses on galaxy merger simulations for our Milky Way, M31 (Andromeda), and M33 (Triangulum), where the MW and M31 are expected to first collide in about 4 billion years.
 
 All homeworks and assignments for the class will be stored here.
 
