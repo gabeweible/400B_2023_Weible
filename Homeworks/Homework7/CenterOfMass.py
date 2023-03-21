@@ -105,6 +105,7 @@ class CenterOfMass:
             error tolerance in kpc. ``Default'' is 0.1 kpc
         volDec : 'float'
             factor to decrease radius by when iterating. Default was 2, before.
+            4 for M33 (more stripped)
         
         RETURNS
         ----------
