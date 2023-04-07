@@ -1,0 +1,266 @@
+%% Beginning of file 'sample631.tex'
+%%
+%% Modified 2021 March
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.31 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls and other external packages such as
+%% latexsym, graphicx, amssymb, longtable, and epsf.  Note that as of 
+%% Oct 2020, APS now uses revtex4.2e for its journals but remember that 
+%% AASTeX v6+ still uses v4.1. All of these external packages should 
+%% already be present in the modern TeX distributions but not always.
+%% For example, revtex4.1 seems to be missing in the linux version of
+%% TexLive 2020. One should be able to get all packages from www.ctan.org.
+%% In particular, revtex v4.1 can be found at 
+%% https://www.ctan.org/pkg/revtex4-1.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%% using aastex version 6.3
+\documentclass[twocolumn]{aastex631}
+\usepackage{wasysym, gensymb}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be invoked like this:
+%%
+%% \documentclass[arguments]{aastex631}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Supresses an abstract. Originally for RNAAS manuscripts 
+%%                but now that abstracts are required this is obsolete for
+%%                AAS Journals. Authors might need it for other reasons. DO NOT
+%%                use \begin{abstract} and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default
+%%   linenumbers  : turn on lineno package.
+%%   trackchanges : required to see the revision mark up and print its output
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
+%%                  for dual anonymous review.
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex631}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%\hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+%\received{March 1, 2021}
+%\revised{April 1, 2021}
+%\accepted{\today}
+
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+%%
+%% For manuscript without any need to use \collaboration the 
+%% \AuthorCollaborationLimit command from v6.2 can still be used to 
+%% show a subset of authors.
+%
+%\AuthorCollaborationLimit=2
+%
+%% will only show Schwarz & Muench on the front page of the manuscript
+%% (assuming the \collaboration and \nocollaboration commands are
+%% commented out).
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{Disk and Bulge Intensity Profile Evolution During the MW-M31 Major Merger}
+\submitjournal{ASTR 400B 6 April 2023}
+\email{gweible@email.arizona.edu}
+\author{Gabriel Weible}
+
+\keywords{Local Group(929) --- Galaxy mergers(608) ---  Galaxy stellar disks(1594) --- Galaxy bulges(578) --- Milky Way evolution(1052)}
+
+%INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\subsection{Topic}
+A galaxy merger occurs when two galaxies collide. Major mergers, those between large galaxies of comparable luminosities, are the most transformative events that galaxies may undergo after their formation \citep{lambas2012}. It is understood that the predominant members of our Local Group, the Milky Way (MW) and Andromeda (M31) galaxies, will most likely merge in the far future. This will cause the two now-spiral galaxies to ultimately coalesce into a single elliptical galaxy. The Local Group is a galaxy group containing over 100 gravitationally bound galaxies, with its largest components being the MW and M31, each hosting many smaller satellite galaxies. Utilizing measurements of the velocities of the centers of mass (COM) of the MW and M31 \citep{paper2}, \cite{paper3} found an expected merger of the MW and M31 in ${\sim}6 \ \mathrm{Gyr}$ after a first pericenter in ${\sim}4 \ \mathrm{Gyr}$. Collisionless interactions between the stars of the MW and M31 lead to largely random orbits, in line with field elliptical galaxies and juxtaposed with the ordered rotation of the present MW and M31 spirals.
+
+The stellar bodies of disk galaxies are largely comprised of the galaxies' bulges and disks. Stellar bulges of spiral galaxies are relatively dense groups of stars found within the central regions of their galactic hosts. Bulges generally come in two flavors: classical bulges or pseudobulges. M31 has a large classical bulge \citep{kormendy2010}, which is similar in form to an elliptical galaxy. The MW has a smaller pseudobulge. Pseudobulges are not spherically symmetric, are rotation-supported, and have S\'{e}rsic indices $n \le 2$.
+
+ We can examine the evolutions of the MW and M31 disks and bulges by studying their radial intensity profiles throughout a simulated merger. Radial intensity profiles describe how the luminosity per unit area in a 2-dimensional projection of a galaxy varies as a function of radius from its galactic center. These profiles can be fit in terms of S\'{e}rsic profiles (see Equation \ref{eqn:sersic}) to quantify the rate of radial falloff in intensity with a S\'ersic index $n$ \citep{sersic1963, sersic1968}.
+
+\subsection{Motivation}
+The evolutions of disks and bulges during major mergers are important to understanding the galaxies that we see today, including those in our own local group, and how they will evolve as they merge. From \cite{willman2012}: ``A galaxy is a gravitationally bound set of stars whose properties cannot be explained by a combination of baryons and Newton's laws of gravity.'' Galaxy evolution involves how galaxies change with time, which observationally we can study by observing galaxies at varied look-back times (redshifts $z$) to get statistical or population-level results for how galaxies have reached their forms at $z=0$ (``now''). The field of galaxy evolution includes studying how galaxies may lose gas (``quenching''), form stars, change in color (a proxy for the age of stellar populations), grow their central supermassive black holes, and even the larger, catastrophic structural changes that mergers induce.
+
+We require simulations to study how galaxies may continue to evolve in the future, and many of the details of major mergers are still ill-understood. While we can directly observe some galaxy mergers in progress, e.g.~NGC 4678 A\&B (The Mice Galaxies), we cannot measure the proper motions of these merging galaxies. The MW-M31 system is unique in that we can directly measure the proper motions of stars in each galaxy \citep{paper1}, which has informed our simulated merger model. At the beginning of the simulation, we have two large spiral galaxies ($M \approx 10^{12}$). Understanding how spiral galaxies may evolve to form ellipticals through major mergers can help inform our understanding of elliptical galaxy formation, beyond our wanting to understand the fate of our own MW galaxy and the Local Group as a whole. By analyzing the evolutions of the disks and bulges of the MW and M31 through their future simulated merger, we can track the bulk migrations of these galaxies' stars over billions of years.
+
+\subsection{Contemporary Understanding}
+It is thought that many elliptical galaxies are formed through major mergers. Additionally, major mergers are thought to be a means to transform spiral galaxies into S0 galaxies. This is an alternative explanation from S0s being viewed as ``faded spirals'' which cannot explain all their observed properties \citep{querejeta2015II}. See Fig \ref{fig:querejeta} for a showcasing of the striking similarities between simulated merger remnants and observed S0 galaxies. Further, it is believed that mergers (including minor mergers) could be the source of classical bulges \citep{brooks2016}---though major mergers often destroy the original bulge and disk structures of the merging galaxies. It is possible that these structures are then rebuilt by secular processes to create S0 galaxies \citep{querejeta2015I}. In addition, galaxy mergers have been examined as possible creators of elliptical galaxies for a long time \citep{toomre1977}, but there are still concerns that mergers by themselves may be unable to reproduce all relations observed for elliptical galaxies \citep{brooks2016}. Examining major mergers of spiral galaxies is important to understand the formation of elliptical galaxies, S0 galaxies, and classical bulges in spiral galaxies, which can often be characterized and distinguished by their surface brightness or intensity profiles.
+
+\subsection{Open Questions}
+This simulated merger has implications for our understanding of field elliptical galaxies, and there are many open questions concerning galaxy evolution and major mergers: did some field elliptical galaxies form from major mergers like that of the future MW-M31 merger? If so, could \emph{all} of them have formed this way? Are some or all classical bulges formed from galaxy mergers? Are some or all S0 galaxies formed by major mergers? Further examination of simulated major mergers will help to bring us closer to answering some or all of these questions.
+
+% THIS PROJECT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{This Project}
+
+\subsection{Project Introduction}
+I will examine the evolution of the luminosity profiles of the MW and M31 galaxies throughout their simulated future merger. My analysis includes the bulge and disk only, with M33 and dark matter particles not considered. The simulated merger is constructed from a collisionless $N$-body simulation described in \cite{paper3}. The evolutions of the bulge and disk components of the MW and M31 \emph{throughout} the merger were not explored in detail by van der Marel et al., where the final state of the merged remnant was a larger focus of the analysis. Luminosity profiles will be fit in terms of S\'ersic profiles at different time snapshots throughout the course of the merger. See Figures \ref{fig:sersic} and \ref{fig:lab_6} for examples of what a luminosity profile plot at a \emph{single snapshot} may resemble. In Figure \ref{fig:lab_6}, S\'{e}rsic profiles were fit explicitly, and in Figure \ref{fig:sersic} the surface mass density $\Sigma$ was plotted against $R^{1/4}$ to show a straight line indicating a de Vaucouleurs profile \citep{deVaucouleurs1948}. A de Vaucouleurs profile can be described with a S\'{e}rsic index $n = 4$, indicative of an elliptical galaxy or classical bulge. Assuming a particular mass-to-light ratio allows the conversion $\Sigma \to I$. In this paper, we study what is happening to the MW and M31 in the middle of the merger, during the galaxies' metamorphosis from disks with bulges to a single elliptical galaxy.
+
+\subsection{Questions to Address}
+I will address the evolution of the luminosity profiles of the bulge and disk components of the MW and M31 throughout the merger, by fitting to S\'{e}rsic Profiles where S\'ersic indices $n$ are allowed to vary. Of particular interest will be the question of how these S\'{e}rsic indices change throughout the simulated merger, and \emph{when} they change the most. We may expect the greatest changes to be at pericenters or just after pericenters. An increase in S\'{e}rsic index indicates that more stars are being concentrated in the center of a galaxy. These higher concentrations in galactic centers yielding $n > 2$ are indicative of elliptical galaxies and classical bulges, where lower S\'{e}rsic indices ($n \sim 1$) better describe spiral galaxies with more of their light distributed further out in disks. Changes in S\'{e}rsic indices for the bulges and disks of the MW and M31 throughout the simulated merger will help describe how two spiral galaxies can come to form an elliptical galaxy.
+
+\subsection{Importance, Project Relevance}
+\texttt{**Why is this open question an important problem to solve for our understanding of Galaxy Evolution? How will your study help us to address the open question?**}
+
+% METHODOLOGY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Methodology}
+\subsection{Methods Introduction}
+\texttt{**Start with an introduction to the simulations you are using. You must
+reference the paper and describe what is meant by an “N-body” simulation.**}
+
+In our simulation \citep{paper3}, the MW is modeled with a classical bulge more similar to that of M31, as opposed to its true pseudobulge. By the end of the simulation, we have a single merger remnant which is well described by this de Vaucouleurs, $n=4$ surface density profile, making it most similar to field elliptical galaxies \citep{paper3}.
+
+\subsection{Proposed Methods}
+S\'{e}rsic profiles will be fit similarly to the method of Lab 6, but will be made more robust by using \texttt{scipy.optimize.curvefit()}, potentially only fitting profiles to beyond a cut-off radius so as to neglect the innermost components that do not follow well S\'{e}rsic profiles. S\'ersic profiles as a function of radius $r$ are given by the equation,
+\begin{equation}
+    \label{eqn:sersic}
+    I(r) = I_e \exp{(-7.67[(r/R_e)^{1/n} - 1])}
+\end{equation}
+where $L = 7.2 I_e \pi R_e^2$ for the galaxy, and $I_e$ and $R_e$ are the equivalent (half-light) intensity and radius, respectively. $I_e$ and $R_e$ can be calculated at each snapshot from the surface brightness profile, and $n$ can then be varied to best fit the simulated data. When only considering simulated stellar particles, we can take $M_\mathrm{stellar}/L = 1$ to get a surface brightness profile from a surface mass density profile.
+
+This will be attempted at \emph{all} snapshots using for loops through snapshot data files, but if that proves too difficult then snapshots of particular interest will be selected to best show the evolution. All programming and plotting will be done in Python with the \texttt{Matplotlib}, \texttt{Numpy}, and \texttt{SciPy} modules. Refer again to Figures \ref{fig:sersic} and \ref{fig:lab_6} for examples of what my plots at a single snapshot may resemble. If I have time, I may also create animations of these S\'{e}rsic profile--fit plots as the simulation progresses. This would allow for the changes in the luminosity profile and S\'{e}rsic indices to be more easily seen, or otherwise, I may create a plot of $n$ versus $t$. An animation could be created by importing plots into Adobe Premiere.
+
+\subsection{Calculations}
+\texttt{**Describe the calculations your code will compute. You must include all relevant equations and citations, and describe the meaning behind every parameter in the equation (e.g. The circular speed is defined as Vc2 = GM/r, where M is the Mass of the host galaxy (Msun) and r is the Galactocentric radius (kpc) ). Note that the reference for the Hernquist profile is Hernquist 1990 ApJ 356.**}
+
+\subsection{Plots}
+\texttt{**Describe the plots you will need to create and explain why those plots will answer your question. Note that later your results section must feature at least two figures that you created. One Figure can be generated entirely by code from Homeworks or In Class Labs (e.g. phase diagrams, density plots). The other figure must be generated by code that includes one new function or method that YOU created BY YOURSELF.**}
+
+\subsection{Hypothesized Results}
+I expect the S\'{e}rsic indices for both the bulge and disk particles of M31 and the MW to generally increase with time as the merger comes to form a single elliptical galaxy. Relaxation over time through collisionless two-body interactions should drive this process of increasing $n$ overall. I would also expect the change in the luminosity profiles/S\'{e}rsic indices to be greatest at or just after pericenters in the merger, where it seems that the most dramatic changes in the galaxies' structures occur. It is possible that some S\'{e}rsic indices do actually lower, however, possibly due to something like initially-centralized bulge particles being redistributed to outer parts of the galaxy. In this case, it may be more informative to also fit S\'{e}rsic profiles to the galaxies as a whole to account for the net radial migration of bulge \emph{and} disk stars taken together.
+
+% RESULTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Results}
+
+% DISCUSSION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discussion}
+
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{proposal}
+\bibliographystyle{aasjournal}
+
+% FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}[h]
+\plotone{querejeta.eps}
+\caption{Figure 1 from \cite{querejeta2015II}. Here we see the stellar angular momentum $\lambda_\mathrm{R_e}$ plotted against both the ellipticity $\epsilon_\mathrm{e}$ and concentration $R_{90}/R_{50}$ for simulated merger progenitors and remnants from the GalMer \citep{galmer2010} simulations (\href{http://galmer.obspm.fr}{galmer.obspm.fr}) as well as observed Calar Alto Legacy Integral Field Area Survey (CALIFA) galaxies \citep{sanchez2012}. We see that the observed CALIFA S0 galaxies as orange circles generally coincide well with the GalMer merger remnants as grey diamonds in these regions of galactic parameter space.
+\label{fig:querejeta}}
+\end{figure*}
+
+\begin{figure*}[h]
+\plotone{paper_3_fig_7.png}
+\caption{Figure 7 from \cite{paper3}. Here we see a surface mass density profile for the remnant and its solar candidates specifically plotted against the radius from the galactic center to the power of $1/4$, with a semi-log plot. Surface mass density $\Sigma$ can be converted to intensity $I$ by assuming a mass-to-light ratio. The straight lines past ${\sim}1 \ \mathrm{kpc}$ indicate accordance with a de Vaucouleurs, $n=4$ S\'ersic profile.
+\label{fig:sersic}}
+\end{figure*}
+
+\begin{figure*}[h]
+\plotone{Lab6.png}
+\caption{Plot from Lab 6 showing S\'{e}rsic profiles fit to the simulated bulge of M31 at the snapshot for $t=0$ (the present epoch), with a semi-log plot of Intensity $I$ versus distance from the M31 galactic center. Here we see how the effective radius (half-light radius) $R_e$ affects the form of S\'ersic profiles.
+\label{fig:lab_6}}
+\end{figure*}
+
+\end{document}
+
+% End of file `group_project.tex'.
